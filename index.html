@@ -1,30 +1,33 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kygia Ha</title>
-<link rel="preconnect" href="https://fonts.googleapis.com/">
-<link href="jaded%20original_files/css2.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Commit+Mono:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --paper:  #e8e2d6;
-  --paper2: #ddd7ca;
-  --ink:    #1c1a17;
-  --dim:    #4a4640;
-  --faint:  #9a9490;
+  --paper:  #2e2a23;
+  --paper2: #2e2a23;
+  --ink:    #ddd5c0;
+  --dim:    #c4a882;
+  --faint:  #ddd5c0;
   --rule:   rgba(28,26,23,0.1);
-  --red:    #8b1a1a;
+  --red:    #b07060;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
+  margin: 0px 250px;
   background: var(--paper);
   color: var(--ink);
-  font-family: 'Spectral', serif;
+  font-family: 'Fraunces', serif;
   font-weight: 300;
   font-size: 16px;
   line-height: 1.7;
@@ -51,14 +54,13 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(232,226,214,0.94);
+  background: var(--paper);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--rule);
 }
 
 .logo {
-  font-family: 'Spectral', serif;
-  font-style: mono;
+  font-family: 'Fraunces', serif;
   font-size: 1.5rem;
   color: var(--ink);
   text-decoration: none;
@@ -72,8 +74,9 @@ nav {
 }
 
 .nav-links a {
-  font-family: 'Martian Mono', monospace;
-  font-size: .80rem;
+  font-family: 'Commit Mono', monospace;
+  font-size: .9rem;
+  font-weight: 400;
   letter-spacing: 0.07em;
   color: var(--faint);
   text-decoration: none;
@@ -92,7 +95,7 @@ nav {
 }
 
 .hero-sub {
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: var(--faint);
   font-style: italic;
   line-height: 1.8;
@@ -104,14 +107,14 @@ nav {
 /* SHARED SECTION */
 .wrap {
   padding: 2rem 2.5rem;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 0px solid var(--rule);
 }
 
 .wrap.alt { background: var(--paper2); }
 
 .section-label {
-  font-family: 'Martian Mono', monospace;
-  font-size: .88rem;
+  font-family: 'Fraunces', serif;
+  font-size: 1.40rem;
   letter-spacing: 0.12em;
   color: var(--faint);
   margin-bottom: 2rem;
@@ -127,100 +130,36 @@ nav {
   border-top: 1px solid var(--rule);
   cursor: pointer;
   transition: padding-left 0.25s;
+  text-decoration: none;
+  color: inherit;
 }
 .work-row:last-child { border-bottom: 1px solid var(--rule); }
 .work-row:hover { padding-left: 0.5rem; }
-
 .work-row:hover .work-title { color: var(--dim); }
 
+/* when no link is set, dim the arrow to hint it's not linked yet */
+.work-row[data-linked="false"] { cursor: default; }
+.work-row[data-linked="false"]:hover { padding-left: 0; }
+.work-row[data-linked="false"]:hover .work-title { color: var(--ink); }
+
 .work-title {
-  font-family: 'Spectral', serif;
-  font-style: mono;
+  font-family: 'Commit Mono', monospace;
   font-size: 1.05rem;
   color: var(--ink);
   transition: color 0.2s;
 }
 
 .work-type {
-  font-family: 'Martian Mono', monospace;
-  font-size: 0.63rem;
+  font-family: 'Fraunces', serif;
+  font-size: 0.80rem;
   letter-spacing: 0.07em;
   color: var(--faint);
 }
 
 .work-yr {
-  font-family: 'Martian Mono', monospace;
-  font-size: 0.63rem;
+  font-family: 'Fraunces', serif;
+  font-size: 0.80rem;
   color: var(--faint);
-  letter-spacing: 0.05em;
-}
-
-/* SHOP */
-.shop-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 5rem;
-}
-
-.shop-item { cursor: pointer; }
-
-.shop-thumb {
-  width: 100%;
-  aspect-ratio: 1/1;
-  background: var(--paper);
-  border: 0px solid var(--rule);
-  margin-bottom: 0.9rem;
-  overflow: hidden;
-  position: relative;
-}
-
-/* subtle tonal fills — placeholders for photos */
-.shop-item:nth-child(1) .shop-thumb { background: linear-gradient(150deg,#d4ccbc,#b8b0a0); }
-.shop-item:nth-child(2) .shop-thumb { background: linear-gradient(190deg,#ccc4b4,#b0a898); }
-.shop-item:nth-child(3) .shop-thumb { background: linear-gradient(140deg,#c8c0b0,#aca49c); }
-.shop-item:nth-child(4) .shop-thumb { background: linear-gradient(170deg,#d0c8b8,#b4aca0); }
-.shop-item:nth-child(5) .shop-thumb { background: linear-gradient(160deg,#cac2b2,#aea698); }
-.shop-item:nth-child(6) .shop-thumb { background: linear-gradient(130deg,#d2cab8,#b0a89c); }
-.shop-item:nth-child(7) .shop-thumb { background: linear-gradient(180deg,#c8c0b0,#aca498); }
-.shop-item:nth-child(8) .shop-thumb { background: linear-gradient(155deg,#cec6b4,#b2aa9e); }
-
-.shop-thumb-inner {
-  position: absolute;
-  inset: 0;
-  transition: transform ;
-}
-.shop-item:hover .shop-thumb-inner { transform: ; }
-
-.avail {
-  font-family: 'Martian Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  color: var(--faint);
-  margin-bottom: 0.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.dot {
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--red);
-  display: inline-block;
-  opacity: 0.8;
-}
-
-.shop-name {
-  font-style: mono;
-  font-size: 1.2rem;
-  color: var(--ink);
-  margin-bottom: 0.15rem;
-}
-
-.shop-price {
-  font-family: 'Martian Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--dim);
   letter-spacing: 0.05em;
 }
 
@@ -234,13 +173,19 @@ nav {
   gap: 2.5rem;
   align-items: start;
   transition: padding-left 0.25s;
+  text-decoration: none;
+  color: inherit;
 }
 .thought-row:last-child { border-bottom: 1px solid var(--rule); }
 .thought-row:hover { padding-left: 0.5rem; }
 
+.thought-row[data-linked="false"] { cursor: default; }
+.thought-row[data-linked="false"]:hover { padding-left: 0; }
+.thought-row[data-linked="false"]:hover .thought-title { color: var(--ink); }
+
 .thought-date {
-  font-family: 'Martian Mono', monospace;
-  font-size: 0.63rem;
+  font-family: 'Fraunces', serif;
+  font-size: 0.80rem;
   letter-spacing: 0.08em;
   color: var(--faint);
   padding-top: 0.25rem;
@@ -248,7 +193,6 @@ nav {
 }
 
 .thought-title {
-  font-style: mono;
   font-size: 1.05rem;
   color: var(--ink);
   margin-bottom: 0.4rem;
@@ -257,54 +201,18 @@ nav {
 .thought-row:hover .thought-title { color: var(--dim); }
 
 .thought-snippet {
-  font-size: 0.88rem;
+  font-size: 0.90rem;
   color: var(--faint);
   line-height: 1.7;
 }
 
-/* ABOUT */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: start;
-}
-
-.about-text p {
-  font-size: 0.95rem;
-  color: var(--dim);
-  line-height: 1.9;
-  margin-bottom: 1.4rem;
-}
-
-.about-text p em { color: var(--ink); font-style: mono; }
-
-.about-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 2.5rem;
-}
-.about-table tr { border-top: 1px solid var(--rule); }
-.about-table tr:last-child { border-bottom: 1px solid var(--rule); }
-.about-table td {
-  padding: 0.65rem 0;
-  font-family: 'Martian Mono', monospace;
-  font-size: 0.52rem;
-  letter-spacing: 0.06em;
-  vertical-align: top;
-  line-height: 1.7;
-}
-.about-table td:first-child { color: var(--faint); width: 38%; }
-.about-table td:last-child { color: var(--dim); }
-
+/* CONTACT */
 .contact-line {
-  margin-top: 2.5rem;
-  padding-top: 0rem;
-  border-top: 0px solid var(--ink);
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .contact-line a {
-  font-style: mono;
   font-size: 1rem;
   color: var(--ink);
   text-decoration: none;
@@ -322,15 +230,14 @@ footer {
 }
 
 footer p {
-  font-family: 'Martian Mono', monospace;
+  font-family: 'Fraunces', serif;
   font-size: 0.5rem;
   letter-spacing: 0.1em;
   color: var(--faint);
 }
 
 footer .made {
-  font-family: 'Spectral', serif;
-  font-style: mono;
+  font-family: 'Fraunces', serif;
   font-size: 0.8rem;
   color: var(--faint);
   letter-spacing: 0;
@@ -346,10 +253,10 @@ footer .made {
 
 /* RESPONSIVE */
 @media (max-width: 800px) {
+  body { margin: 0; }
   #hero { grid-template-columns: 1fr; padding: 10rem 1.5rem 4rem; }
   .hero-sub { max-width: 100%; }
-  .shop-grid { grid-template-columns: 1fr 1fr; }
-  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
   .thought-row { grid-template-columns: 1fr; gap: 0.5rem; }
   .wrap { padding: 4rem 1.5rem; }
   nav { padding: 1.2rem 1.5rem; }
@@ -366,11 +273,46 @@ footer .made {
   <a class="logo" href="#hero">Kygia Ha</a>
   <ul class="nav-links">
     <li><a href="#work">work</a></li>
-    <li><a href="#shop">shop</a></li>
     <li><a href="#thoughts">thoughts</a></li>
-    <li><a href="#about">about</a></li>
+    <li><a href="#contact">contact</a></li>
   </ul>
 </nav>
+
+<!-- ============================================================
+     YOUR CONTENT — edit only this section to update the site
+     
+     WORK ENTRIES:
+       title:  name of the piece
+       type:   medium / category
+       year:   year made
+       url:    link to the work — use "" to leave unlinked for now
+
+     THOUGHT ENTRIES:
+       date:     e.g. "february 2026"
+       tag:      short category label
+       title:    title of the post
+       snippet:  one-line teaser
+       url:      link to the post — use "" to leave unlinked for now
+     ============================================================ -->
+<script id="content-data" type="application/json">
+{
+  "work": [
+    { "title": "name here",      "type": "painting",     "year": "2025", "url": "" },
+    { "title": "name here",      "type": "music",        "year": "2025", "url": "" },
+    { "title": "name here & II", "type": "sculpture",    "year": "2024", "url": "" },
+    { "title": "name here",      "type": "clothing",     "year": "2024", "url": "" },
+    { "title": "name here",      "type": "photography",  "year": "2024", "url": "" },
+    { "title": "name here",      "type": "electronics",  "year": "2023", "url": "" },
+    { "title": "name here",      "type": "code",         "year": "2023", "url": "" }
+  ],
+  "thoughts": [
+    { "date": "february 2026", "tag": "process",     "title": "supersonic meow device",  "snippet": "subdue human with high frequency meow waves. what do i want?", "url": "" },
+    { "date": "january 2026",  "tag": "sound",       "title": "how to shed properly",    "snippet": "guide to producing and shedding more hair :)",                "url": "" },
+    { "date": "december 2025", "tag": "electronics", "title": "zoomies at 3am",          "snippet": "the importance of zooming at 3am",                          "url": "" },
+    { "date": "october 2025",  "tag": "photography", "title": "thank you for the scritches", "snippet": "thank you for the scritches",                          "url": "" }
+  ]
+}
+</script>
 
 <!-- HERO -->
 <section id="hero">
@@ -379,183 +321,81 @@ footer .made {
 
 <!-- WORK -->
 <section class="wrap" id="work">
-  <p class="section-label r in">work - wip</p>
-  <div class="r in">
-    <div class="work-row">
-      <span class="work-title">name here</span>
-      <span class="work-type">painting</span>
-      <span class="work-yr">2025</span>
-    </div>
-    <div class="work-row">
-      <span class="work-title">name here</span>
-      <span class="work-type">music</span>
-      <span class="work-yr">2025</span>
-    </div>
-    <div class="work-row">
-      <span class="work-title">name here &amp; II</span>
-      <span class="work-type">sculpture</span>
-      <span class="work-yr">2024</span>
-    </div>
-    <div class="work-row">
-      <span class="work-title">name here</span>
-      <span class="work-type">clothing</span>
-      <span class="work-yr">2024</span>
-    </div>
-    <div class="work-row">
-      <span class="work-title">name here</span>
-      <span class="work-type">photography</span>
-      <span class="work-yr">2024</span>
-    </div>
-    <div class="work-row">
-      <span class="work-title">name here</span>
-      <span class="work-type">electronics</span>
-      <span class="work-yr">2023</span>
-    </div>
-    <div class="work-row">
-      <span class="work-title">name here</span>
-      <span class="work-type">code</span>
-      <span class="work-yr">2023</span>
-    </div>
-  </div>
-</section>
-
-<!-- SHOP -->
-<section class="wrap alt" id="shop">
-  <p class="section-label r">shop - wip</p>
-  <div class="shop-grid r">
-
-    <div class="shop-item">
-      <div class="shop-thumb"><div class="shop-thumb-inner"></div></div>
-      <p class="avail"><span class="dot"></span>available</p>
-      <p class="shop-name">name here</p>
-      <p class="shop-price">0.00</p>
-    </div>
-
-    <div class="shop-item">
-      <div class="shop-thumb"><div class="shop-thumb-inner"></div></div>
-      <p class="avail"><span class="dot"></span>available</p>
-      <p class="shop-name">name here</p>
-      <p class="shop-price">0.00</p>
-    </div>
-
-    <div class="shop-item">
-      <div class="shop-thumb"><div class="shop-thumb-inner"></div></div>
-      <p class="avail">3 left</p>
-      <p class="shop-name">name here</p>
-      <p class="shop-price">0.00</p>
-    </div>
-
-    <div class="shop-item">
-      <div class="shop-thumb"><div class="shop-thumb-inner"></div></div>
-      <p class="avail"><span class="dot"></span>available</p>
-      <p class="shop-name">name here</p>
-      <p class="shop-price">0.00</p>
-    </div>
-
-    <div class="shop-item">
-      <div class="shop-thumb"><div class="shop-thumb-inner"></div></div>
-      <p class="avail">sold</p>
-      <p class="shop-name">name here</p>
-      <p class="shop-price">——</p>
-    </div>
-
-    <div class="shop-item">
-      <div class="shop-thumb"><div class="shop-thumb-inner"></div></div>
-      <p class="avail"><span class="dot"></span>available</p>
-      <p class="shop-name">name here</p>
-      <p class="shop-price">0.00</p>
-    </div>
-
-    <div class="shop-item">
-      <div class="shop-thumb"><div class="shop-thumb-inner"></div></div>
-      <p class="avail"><span class="dot"></span>available</p>
-      <p class="shop-name">name here</p>
-      <p class="shop-price">0.00</p>
-    </div>
-
-    <div class="shop-item">
-      <div class="shop-thumb"><div class="shop-thumb-inner"></div></div>
-      <p class="avail">2 left</p>
-      <p class="shop-name">Cast Form II</p>
-      <p class="shop-price">0.00</p>
-    </div>
-
-  </div>
+  <p class="section-label r in">work</p>
+  <div class="r in" id="work-list"></div>
 </section>
 
 <!-- THOUGHTS -->
 <section class="wrap" id="thoughts">
-  <p class="section-label r">thoughts - wip</p>
-  <div class="r">
-    <div class="thought-row">
-      <p class="thought-date">february 2026<br>process</p>
-      <div>
-        <p class="thought-title">supersonic meow device</p>
-        <p class="thought-snippet">subdue human with high frequency meow waves. what do i want?</p>
-      </div>
-    </div>
-    <div class="thought-row">
-      <p class="thought-date">january 2026<br>sound</p>
-      <div>
-        <p class="thought-title">how to shed properly</p>
-        <p class="thought-snippet">guide to producing and shedding more hair :)</p>
-      </div>
-    </div>
-    <div class="thought-row">
-      <p class="thought-date">december 2025<br>electronics</p>
-      <div>
-        <p class="thought-title">zoomies at 3am</p>
-        <p class="thought-snippet">the importance of zooming at 3am</p>
-      </div>
-    </div>
-    <div class="thought-row">
-      <p class="thought-date">october 2025<br>photography</p>
-      <div>
-        <p class="thought-title">thank you for the scritches</p>
-        <p class="thought-snippet">thank you for the scritches</p>
-      </div>
-    </div>
-  </div>
+  <p class="section-label r">thoughts</p>
+  <div class="r" id="thoughts-list"></div>
 </section>
 
-<!-- ABOUT -->
-<section class="wrap alt" id="about">
-  <p class="section-label r">about - wip</p>
-  <div class="about-grid r">
-    <div class="about-text">
-      <p>my cats speak to me, they tell me to give up.</p>
-      <p>cat dance <em>okay?</em></p>
-      <p>help is needed. thank you.</p>
-      <table class="about-table">
-        <tbody><tr><td>based</td><td>unknown</td></tr>
-        <tr><td>mediums</td><td>unknown</td></tr>
-        <tr><td>available for</td><td>unknown</td></tr>
-        <tr><td>not for</td><td>unknow</td></tr>
-      </tbody></table>
-      <div class="contact-line">
-        <a href="mailto:hello@kygiaha.com">hello@kygiaha.com</a>
-      </div>
-    </div>
+<!-- CONTACT -->
+<section class="wrap alt" id="contact">
+  <p class="section-label r">contact</p>
+  <div class="contact-line r">
+    <a href="mailto:hello@kygiaha.com">hello@kygiaha.com</a>
   </div>
 </section>
-
-<footer>
-  <p>© 2026 Kygia Ha</p>
-  <p class="made">made slowly</p>
-</footer>
 
 <script>
-const els = document.querySelectorAll('.r');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('in'), i * 55);
-      io.unobserve(e.target);
+  // ── Build work list ──────────────────────────────────────────
+  const data = JSON.parse(document.getElementById('content-data').textContent);
+
+  const workList = document.getElementById('work-list');
+  data.work.forEach(item => {
+    const el = document.createElement(item.url ? 'a' : 'div');
+    el.className = 'work-row';
+    if (item.url) {
+      el.href = item.url;
+      el.target = '_blank';
+      el.rel = 'noopener';
+    } else {
+      el.dataset.linked = 'false';
     }
+    el.innerHTML = `
+      <span class="work-title">${item.title}</span>
+      <span class="work-type">${item.type}</span>
+      <span class="work-yr">${item.year}</span>
+    `;
+    workList.appendChild(el);
   });
-}, { threshold: 0.07 });
-els.forEach(el => io.observe(el));
+
+  // ── Build thoughts list ──────────────────────────────────────
+  const thoughtsList = document.getElementById('thoughts-list');
+  data.thoughts.forEach(item => {
+    const el = document.createElement(item.url ? 'a' : 'div');
+    el.className = 'thought-row';
+    if (item.url) {
+      el.href = item.url;
+      el.target = '_blank';
+      el.rel = 'noopener';
+    } else {
+      el.dataset.linked = 'false';
+    }
+    el.innerHTML = `
+      <p class="thought-date">${item.date}<br>${item.tag}</p>
+      <div>
+        <p class="thought-title">${item.title}</p>
+        <p class="thought-snippet">${item.snippet}</p>
+      </div>
+    `;
+    thoughtsList.appendChild(el);
+  });
+
+  // ── Scroll reveal ────────────────────────────────────────────
+  const els = document.querySelectorAll('.r');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 55);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07 });
+  els.forEach(el => io.observe(el));
 </script>
 
-
-</body></html>
+</body>
+</html>
